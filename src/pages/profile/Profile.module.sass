@@ -1,0 +1,90 @@
+@import '../../vars'
+
+.content
+  width: 100%
+  display: flex
+  flex-direction: column
+  gap: 2rem
+
+.userCardWrapper
+  width: 100%
+  background: $dark
+  border: 1px solid $bright
+  border-radius: 1rem
+
+.userCard
+  padding: 2rem
+  display: flex
+  gap: 1rem
+  align-items: center
+  > img
+    width: 8rem
+    height: 8rem
+  > button
+    width: 10rem
+    font-size: 1rem
+    background: $text_color
+    height: 2.5rem
+    border: none
+    border-radius: 0.5rem
+    color: $bg_color
+    font-weight: 600
+    &:hover
+      cursor: pointer
+
+.bio
+  align-self: start
+  width: 51rem
+
+.name
+  font-size: 2rem
+  font-weight: 500
+  margin-top: 0.3rem
+
+.notification
+  width: 100%
+  height: 5rem
+  border: 1px solid $bright
+  border-radius: 1rem
+  &Text
+    height: 100%
+    font-size: 1.6rem
+    display: flex
+    justify-content: center
+    align-items: center
+
+.post
+  &Suggestion
+    display: flex
+    padding: 0.7rem 1rem
+    > img
+      width: 2.5rem
+      height: 2.5rem
+    > div
+      font-size: 1.2rem
+    &Block
+      width: 100%
+      border: 1px solid $bright
+      border-radius: 0.85rem
+      cursor: pointer
+  &Avatar
+    margin-right: 0.8rem
+  &Btn
+    margin-left: 0.8rem
+    align-self: end
+
+.textarea
+  height: 5rem
+  overflow: hidden
+  resize: none
+  width: 100%
+  font-size: 1.2rem
+  margin-top: 0.8rem
+  line-height: 1.2rem
+  background: rgba(0,0,0,0)
+  border: none
+  border-radius: 0.5rem
+  color: $text_color
+  outline: none
+  &.active
+    background: $bright

@@ -1,0 +1,16 @@
+.button {
+  width: 33rem;
+  height: 4rem;
+  background: #1BDCAE;
+  color: #D9D9D9;
+  border-radius: 0.8rem;
+  border: 1px solid #4F4F4F;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/*# sourceMappingURL=Button.module.css.map */

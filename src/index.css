@@ -1,0 +1,49 @@
+#root, body, html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: #3F3F3F;
+    color: #D9D9D9
+}
+
+html {
+    font-size: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Webkit (Chrome, Safari) scrollbar */
+::-webkit-scrollbar {
+    width: 0; /* ширина полосы прокрутки */
+    background: transparent; /* прозрачный фон */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* цвет фона */
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent; /* цвет самой полосы */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3F3F3F; /* цвет полосы при наведении */
+}
+
+/* Полностью скрыть полосу прокрутки при выключенном скролле */
+::-webkit-scrollbar-thumb:vertical {
+    opacity: 0; /* скрыть полосу */
+}
+
+/* Показать полосу прокрутки по горизонтали всегда */
+::-webkit-scrollbar-thumb:horizontal {
+    opacity: 0; /* показать полосу всегда */
+}

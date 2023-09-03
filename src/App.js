@@ -1,10 +1,41 @@
 import './App.css';
+import {Route, Routes} from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Profile from "./pages/profile";
+import Dialogs from "./pages/dialogs";
+import UserExist from "./hoc/UserExist";
+import Login from "./pages/login";
+import Registration from "./pages/registration";
+import RequireAuth from "./hoc/RequireAuth";
+import FormLayout from "./components/formLayout";
+import AuthProvider from "./hoc/AuthProvider";
+import RegisterName from "./pages/registration/RegisterName";
 
 function App() {
   return (
-    <div className="App">
-      Hello world
-    </div>
+    <AuthProvider>
+        <Routes>
+            <Route path='/' element={
+                <RequireAuth>
+                    <Layout />
+                </RequireAuth>
+            }>
+                <Route path=':id' element={
+                    <UserExist>
+                        <Profile />
+                    </UserExist>
+                } />
+                <Route path='dialogs' element={<Dialogs />} />
+            </Route>
+            <Route path='/' element={<FormLayout />}>
+                <Route path='login' element={<Login />} />
+                <Route path='registration'>
+                    <Route index element={<Registration />} />
+                    <Route path='name' element={<RegisterName />} />
+                </Route>
+            </Route>
+        </Routes>
+    </AuthProvider>
   );
 }
 
