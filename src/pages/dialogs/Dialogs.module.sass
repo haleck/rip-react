@@ -70,15 +70,19 @@
     > img
       height: 2.6rem
       width: 2.6rem
+      cursor: pointer
+    > div
+      cursor: pointer
   &Messages
-    width: 100%
+    width: 49.8rem
     height: 100%
     padding: 0 1.5rem
     overflow-y: scroll
   &Message
-    width: 100%
     display: flex
     margin-top: 2rem
+    white-space: pre-line
+    word-break: break-word
     > div
       margin-left: 1rem
       font-size: 1.2rem
@@ -101,6 +105,7 @@
     margin-bottom: 1rem
     padding-left: 4rem
     font-size: 1.2rem
+    word-break: break-word
   &Footer
     width: 100%
     padding: 1rem
@@ -127,15 +132,16 @@
   overflow: hidden
 
 .name
-  width: 11.5rem
+  width: 11.2rem
 
 .date
-  width: 6.2rem
+  width: 6.5rem
   opacity: 0.3
   margin-left: 0.5rem
 
 .lastMessage
   opacity: 0.5
+  width: 18rem
 
 .tip
   display: flex

@@ -21,17 +21,16 @@ const Login = () => {
         e.preventDefault()
 
         const form = e.target
-        const user = form.email.value
+        const email = form.email.value
 
-        const navigatePath = fromPage === '/' ? '/' + user : fromPage
-        signIn(user, ()=> navigate(navigatePath, {replace: true}))
+        signIn(email, fromPage)
     }
 
     return (
         <Form onSubmit={login}>
             <Logo />
             <InputField name='email' label='Почта' value={email} setValue={setEmail} />
-            <InputField label='Пароль' value={password} setValue={setPassword} />
+            <InputField label='Пароль' value={password} setValue={setPassword} type='password'/>
             <Button style={{marginTop: 20}} type="submit">Войти</Button>
             <CustomLink to='/registration' state={location.state}>Нет аккаунта? Регистрация</CustomLink>
         </Form>

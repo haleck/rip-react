@@ -28,8 +28,8 @@ const Registration = () => {
         <Form onSubmit={goToNextStep}>
             <Logo />
             <InputField name='email' label='Почта' value={email} setValue={setEmail} />
-            <InputField name='password' label='Пароль' value={password} setValue={setPassword} />
-            <InputField label='Повторно пароль' value={repeatPassword} setValue={setRepeatPassword} />
+            <InputField name='password' label='Пароль' value={password} setValue={setPassword} type='password' />
+            <InputField label='Повторно пароль' value={repeatPassword} setValue={setRepeatPassword} type='password' />
             <Button style={{marginTop: 20}} type="submit">Далее</Button>
             <CustomLink to='/login' state={location.state}>Уже есть аккаунт? Войти</CustomLink>
         </Form>

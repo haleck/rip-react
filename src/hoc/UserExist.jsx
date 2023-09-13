@@ -1,15 +1,23 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
 import {useAuth} from "../hooks/useAuth";
+import axios from "axios";
 
 const UserExist = ({children}) => {
     const {user} = useAuth()
-    const userList = ['1','2','3','4','5','10', user]
-
     const {pathname} = useLocation()
-    const userExist = userList.includes(pathname.slice(1))
 
-    if (!userExist) {
+    const userExists = async (userId) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/users/checkUserExists/${pathname.slice(1)}`)
+            return response.status === 200;
+        } catch (e) {
+            console.log(e)
+            return false
+        }
+    }
+
+    if (!userExists(user.id)) {
         return <div
             style={{
                 height: '100%',

@@ -80,17 +80,22 @@
 .dialogHeader > img {
   height: 2.6rem;
   width: 2.6rem;
+  cursor: pointer;
+}
+.dialogHeader > div {
+  cursor: pointer;
 }
 .dialogMessages {
-  width: 100%;
+  width: 49.8rem;
   height: 100%;
   padding: 0 1.5rem;
   overflow-y: scroll;
 }
 .dialogMessage {
-  width: 100%;
   display: flex;
   margin-top: 2rem;
+  white-space: pre-line;
+  word-break: break-word;
 }
 .dialogMessage > div {
   margin-left: 1rem;
@@ -117,6 +122,7 @@
   margin-bottom: 1rem;
   padding-left: 4rem;
   font-size: 1.2rem;
+  word-break: break-word;
 }
 .dialogFooter {
   width: 100%;
@@ -148,17 +154,18 @@
 }
 
 .name {
-  width: 11.5rem;
+  width: 11.2rem;
 }
 
 .date {
-  width: 6.2rem;
+  width: 6.5rem;
   opacity: 0.3;
   margin-left: 0.5rem;
 }
 
 .lastMessage {
   opacity: 0.5;
+  width: 18rem;
 }
 
 .tip {

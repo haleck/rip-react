@@ -1,17 +1,44 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from "./Profile.module.css";
-import {useParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import userPhoto from '../../assets/svg/userPhoto.svg'
 import Post from "../../components/post";
 import postIcon from "../../assets/svg/post.svg"
 import AutoResizeTextarea from "../../components/autoResizeTextarea";
+import {useAuth} from "../../hooks/useAuth";
+import axios from "axios";
 
 const Profile = () => {
     const {id} = useParams()
     const [text, setText] = useState('')
+    const {user} = useAuth()
+    const location = useLocation()
+    const navigate = useNavigate()
 
-    const userStatus = 'Жизнь – это карнавалй. Мои мечты и стремления вдохновляют меня на новые подвиги. Время проживать каждую минуту, наслаждаться каждым мгновением и создавать незабываемые воспоминания.'
-    const [status, setStatus] = useState(userStatus)
+    const [status, setStatus] = useState(user.status || '')
+    const [name, setName] = useState('')
+    const [surname, setSurname] = useState('')
+    const [posts, setPosts] = useState([])
+
+    const currentUserId = location.pathname.slice(1)
+
+    const isOwnProfile = currentUserId === user.id
+
+    const fetchPosts = async (userId) => {
+        const response = await axios.get(`http://localhost:5000/api/posts/getAllUsersPosts/${userId}`)
+        setPosts(response.data)
+    }
+    const fetchUserInfo = async (userId) => {
+        const response = await axios.get(`http://localhost:5000/api/users/getUserInfo/${userId}`)
+        setStatus(response.data.status || '')
+        setName(response.data.name)
+        setSurname(response.data.surname)
+    }
+    useEffect(()=> {
+        fetchPosts(currentUserId)
+        fetchUserInfo(currentUserId)
+    }, [currentUserId])
+
     const [editStatus, setEditStatus] = useState(false)
     const textareaStatusRef = useRef(null)
     const handleKeyPress = (e) => {
@@ -33,70 +60,125 @@ const Profile = () => {
         }
     }
 
-    const posts = [
-        {
-            id: 1,
-            user:'Имя Фамилия',
-            time:'17 апреля в 19:00',
-            content:'Текст этого поста может быть любой длины'
-        },
-        {
-            id: 2,
-            user:'ДругоеИмя  ДругаяФамилия',
-            time:'10 августа в 12:30',
-            content:'Длинный длинный текст поста, который повторяется много-много раз. Длинный длинный текст поста, который повторяется много-много раз. Длинный длинный текст поста, который повторяется много-много раз. Длинный длинный текст поста, который повторяется много-много раз. Длинный длинный текст поста, который повторяется много-много раз. '
+    const createPost = async (text) => {
+        try {
+            const params = {
+                author: currentUserId,
+                authorName: name + ' ' + surname,
+                content: text
+            }
+
+            await axios.post('http://localhost:5000/api/posts/create', params)
+            fetchPosts(currentUserId)
+            setText('')
+        } catch (e) {
+            console.log(e)
         }
-    ]
+    }
+
+    const changeStatus = async () => {
+        try {
+            const params = {
+                id: currentUserId,
+                status: status
+            }
+            setEditStatus(false)
+            await axios.put('http://localhost:5000/api/users/changeStatus', params)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const createDialogAndRedirect = async () => {
+        try {
+            const params = {
+                firstUser: user.id,
+                firstUserName: user.name + ' ' + user.surname,
+                secondUser: currentUserId,
+                secondUserName: name + ' ' + surname
+            }
+
+            const response = await axios.post('http://localhost:5000/api/dialogs/create', params)
+            navigate('/dialogs', {state: {dialogId: response.data._id, ...params}})
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <div className={classes.content}>
+
             <div className={classes.userCardWrapper}>
                 <div className={classes.userCard}>
-                    <img src={userPhoto} alt='avatar' />
-                    <div className={classes.bio}>
-                        <div className={classes.name}>Имя Фамилия</div>
-                        <textarea
-                            className={editStatus? [classes.textarea, classes.active].join(' ') : classes.textarea}
-                            onBlur={()=>setEditStatus(false)}
-                            onFocus={()=>setEditStatus(true)}
-                            rows={4}
-                            value={status}
-                            onChange={(e)=>handleInput(e)}
-                            onKeyDown={handleKeyPress}
-                            placeholder={editStatus ? '' : 'Введите пользовательский статус'}
-                            ref={textareaStatusRef}
-                        />
+                    <img src={userPhoto} alt='avatar' style={!isOwnProfile && !status? {height: "8.7rem"} : {}}/>
+                    <div className={classes.bio} style={isOwnProfile? {width: '100%'} : status? {} : {alignSelf: 'center'}}>
+                        <div className={classes.name} style={!status && !isOwnProfile? {fontSize: "2.4rem"} : {}}>
+                            {name + ' ' + surname}
+                        </div>
+                        {isOwnProfile?
+                            <textarea
+                                className={editStatus? [classes.textarea, classes.active].join(' ') : classes.textarea}
+                                onBlur={changeStatus}
+                                onFocus={()=>setEditStatus(true)}
+                                rows={4}
+                                value={status}
+                                onChange={(e)=>handleInput(e)}
+                                onKeyDown={handleKeyPress}
+                                placeholder={editStatus ? '' : 'Введите пользовательский статус'}
+                                ref={textareaStatusRef}
+                            />
+                            :
+                            status &&
+                                <div className={classes.textarea}>
+                                    {status}
+                                </div>
+                        }
                     </div>
-                    <button>
-                        Start messaging
-                    </button>
+                    {!isOwnProfile &&
+                        <button onClick={createDialogAndRedirect}>
+                            Start messaging
+                        </button>
+                    }
                 </div>
             </div>
 
-            <div className={classes.postSuggestionBlock}>
-                <div className={classes.postSuggestion}>
-                    <img src={userPhoto} alt='userPhoto' className={classes.postAvatar}/>
-                    <AutoResizeTextarea
-                        text={text}
-                        setText={setText}
-                        maxLength={1000}
-                        placeholder='Что у вас нового?'
-                    />
-                    <img src={postIcon} alt='post' className={classes.postBtn}/>
+            {isOwnProfile &&
+                <div className={classes.postSuggestionBlock}>
+                    <div className={classes.postSuggestion}>
+                        <img src={userPhoto} alt='userPhoto' className={classes.postAvatar}/>
+                        <AutoResizeTextarea
+                            text={text}
+                            setText={setText}
+                            maxLength={1000}
+                            placeholder='Что у вас нового?'
+                        />
+                        <img src={postIcon} alt='post' className={classes.postBtn} onClick={()=>createPost(text)}/>
+                    </div>
                 </div>
-            </div>
+            }
 
             {posts.length > 0?
                 posts.map((post)=>
-                    <Post key={post.id} name={post.user} time={post.time}>{post.content}</Post>
+                    <Post
+                        key={post._id}
+                        id={post._id}
+                        name={post.authorName}
+                        time={post.createdAt}
+                        deleteOption={isOwnProfile}
+                        deletePostCallback={()=>setPosts(posts.filter((item)=> item._id !== post._id))}
+                    >
+                        {post.content}
+                    </Post>
                 )
                 :
+                !isOwnProfile &&
                 <div className={classes.notification}>
                     <div className={classes.notificationText}>
                         Пользователь пока пока не опубликовал ни одного поста
                     </div>
                 </div>
             }
+
         </div>
     );
 };

@@ -6,152 +6,101 @@ import chats from '../../assets/svg/chats.svg'
 import userPhoto from '../../assets/svg/userPhoto.svg'
 import AutoResizeTextarea from "../../components/autoResizeTextarea";
 import send from '../../assets/svg/post.svg'
-
-const dialogs = [
-    {id: 0, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 2, name:'Денис Петров', dateOfLastMessage:'15.09.2023', lastMessage:'Пошел ты нафиг'},
-    {id: 3, name:'Оченьоченьдлинноеимя Фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Ты дурак, я не хочу с тобой больше разговаривать'},
-    {id: 4, name:'Денис Петров', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 5, name:'Антон Власов', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 6, name:'Почему Почемушкин', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 7, name:'Валерий Леонтьев', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 8, name:'Как Жить?', dateOfLastMessage:'15.09.2023', lastMessage:'Пошел ты нафиг'},
-    {id: 9, name:'Оченьоченьдлинноеимя Фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Ты дурак, я не хочу с тобой больше разговаривать'},
-    {id: 10, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 11, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 12, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 13, name:'Имя Иванов', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 14, name:'Денис Петров', dateOfLastMessage:'15.09.2023', lastMessage:'Пошел ты нафиг'},
-    {id: 15, name:'Оченьоченьдлинноеимя Фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Ты дурак, я не хочу с тобой больше разговаривать'},
-    {id: 16, name:'Денис фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 17, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 18, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 19, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 20, name:'Денис Петров', dateOfLastMessage:'15.09.2023', lastMessage:'Пошел ты нафиг'},
-    {id: 21, name:'Оченьоченьдлинноеимя Фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Ты дурак, я не хочу с тобой больше разговаривать'},
-    {id: 22, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 23, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 24, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 25, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 26, name:'Денис Петров', dateOfLastMessage:'15.09.2023', lastMessage:'Пошел ты нафиг'},
-    {id: 27, name:'Оченьоченьдлинноеимя Фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Ты дурак, я не хочу с тобой больше разговаривать'},
-    {id: 28, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 29, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-    {id: 30, name:'Имя фамилия', dateOfLastMessage:'16.08.2023', lastMessage:'Последнее сообщение'},
-]
-
-const messages = [
-    [
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},{name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-        {name: 'Иван иванович', text: 'Привет! Проверим, как это работает?'},
-        {name: 'Иван иванович2', text: 'Ку, давай'},
-        {name: 'Иван иванович', text: 'Например я начну писать одно сообщение'},
-        {name: 'Иван иванович', text: 'И продолжу писать тоже я'},
-        {name: 'Иван иванович2', text: 'А ты напиши более длинное сообщение?'},
-        {name: 'Иван иванович', text: 'Да, конечно давай попробуем посмотреть что будет!!'},
-        {name: 'Иван иванович', text: 'Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает? Проверим, как это работает?'},
-    ]
-]
+import {useAuth} from "../../hooks/useAuth";
+import axios from "axios";
+import {useLocation, useNavigate} from "react-router-dom";
+import {addLineBreaks} from "../../utils/format";
 
 const Dialogs = () => {
-    const [dialog, setDialog] = useState(null)
+    const {user} = useAuth()
+    const location = useLocation()
+    const [dialog, setDialog] = useState({})
+    const [fetchedDialogs, setFetchedDialogs] = useState([])
+    const [searchedDialogs, setSearchedDialogs] = useState([])
+
+    const [companionName, setCompanionName] = useState('')
+    const [companionId, setCompanionId] = useState('')
+
+    const navigate = useNavigate()
+
+    const fetchDialogs = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/dialogs/getAllUsersDialogs/${id}`)
+            setFetchedDialogs(response.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const fetchDialogMessagesAndSetDialog = async (dialog) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/api/messages/getAllFromDialog/${dialog._id}`)
+            setDialog({...dialog, messages: response.data})
+
+            if(dialog.firstUser === user.id) {
+                setCompanionId(dialog.secondUser)
+                setCompanionName(dialog.secondUserName)
+            } else {
+                setCompanionId(dialog.firstUser)
+                setCompanionName(dialog.firstUserName)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    useEffect(()=>{
+        const dialogId = location.state?.dialogId
+        const firstUser = location.state?.firstUser
+        const firstUserName = location.state?.firstUserName
+        const secondUser = location.state?.secondUser
+        const secondUserName = location.state?.secondUserName
+
+        if (dialogId) {
+            fetchDialogMessagesAndSetDialog({_id: dialogId, firstUser, firstUserName, secondUser, secondUserName})
+        }
+        fetchDialogs(user.id)
+    }, [])
+
     const [message, setMessage] = useState('')
-    const [searchedDialogs, setSearchedDialogs] = useState(dialogs)
     const [searchQuery, setSearchQuery] = useState('')
     const dialogRef = useRef(null)
 
     useEffect(()=>{
-        setSearchedDialogs(dialogs.filter(
-            (dialog)=>dialog.name.toLowerCase().includes(
-                searchQuery.toLowerCase()
-            ))
+        setSearchedDialogs(fetchedDialogs
+            .filter((dialog)=>
+                {
+                    let compainonName = dialog.firstUser === user.id? dialog.secondUserName : dialog.firstUserName
+                    return compainonName.toLowerCase().includes(
+                        searchQuery.toLowerCase()
+                    )
+                }
+            )
         )
-    }, [searchQuery])
+    }, [searchQuery, fetchedDialogs])
 
     useEffect(()=>{
-        if (dialog)
+        if (dialog.messages)
             dialogRef.current.scrollTop = dialogRef.current.scrollHeight
     },[dialog])
 
-    const fetchDialog = (id) => {
-        const result = messages[id] || []// Запрос диалога на сервер
-
-        setDialog(result)
+    const createMessage = async () => {
+        try {
+            const params = {
+                dialog: dialog._id,
+                sender: user.id,
+                senderName: user.name + ' ' + user.surname,
+                receiver: dialog.firstUser === user.id ? dialog.secondUser : dialog.firstUser,
+                receiverName: dialog.firstUser === user.id ? dialog.secondUserName : dialog.firstUserName,
+                text: message
+            }
+            console.log(params)
+            setMessage('')
+            const response = await axios.post('http://localhost:5000/api/messages/create', params)
+            await fetchDialogMessagesAndSetDialog(dialog)
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
@@ -166,35 +115,41 @@ const Dialogs = () => {
                             onChange={(e)=>setSearchQuery(e.target.value)}
                         />
                     </label>
-                    {searchedDialogs.map((item)=>
-                        <DialogsItem
-                            item={item}
-                            key={item.id}
-                            onClick={()=>fetchDialog(item.id)}
-                            style={dialog === item.id? {background: 'rgba(217,217,217,0.2)'} : {}}
-                        />
+                    {searchedDialogs.map((item)=>{
+                        let companion = {
+                            name: item.firstUser === user.id ? item.secondUserName : item.firstUserName,
+                            dateOfLastMessage: item.updatedAt,
+                            lastMessage: item.lastMessage
+                        }
+                            return <DialogsItem
+                                item={companion}
+                                key={item.id}
+                                onClick={()=>fetchDialogMessagesAndSetDialog(item)}
+                                style={dialog._id === item._id? {background: 'rgba(217,217,217,0.2)'} : {}}
+                            />
+                        }
                     )}
                 </div>
             </div>
-            {dialog?
+            {dialog.messages?
                 <div className={classes.dialog}>
                     <div className={classes.dialogHeader}>
-                        <div>Фамилия Имя</div>
-                        <img src={userPhoto} alt='userPhoto' />
+                        <div onClick={()=>navigate(`/${companionId}`)}>{companionName}</div>
+                        <img src={userPhoto} alt='userPhoto' onClick={()=>navigate(`/${companionId}`)}/>
                     </div>
                     <div className={classes.dialogMessages} ref={dialogRef}>
-                        {dialog.length > 0?
-                            dialog.map((message, index)=>
-                                dialog[index-1]?.name !== dialog[index]?.name ?
+                        {dialog.messages.length > 0?
+                            dialog.messages.map((message, index)=>
+                                dialog.messages[index-1]?.sender !== dialog.messages[index]?.sender ?
                                     <div className={classes.dialogMessage} key={index}>
                                         <img src={userPhoto} alt='userPhoto'/>
                                         <div>
-                                            <div style={{color:"white"}}>{message.name}</div>
-                                            <div>{message.text}</div>
+                                            <div style={{color:"white"}}>{message.senderName}</div>
+                                            <div>{addLineBreaks(message.text)}</div>
                                         </div>
                                     </div>
                                     :
-                                    <div className={classes.dialogAdditionalMessage} key={index}>{message.text}</div>
+                                    <div className={classes.dialogAdditionalMessage} key={index}>{addLineBreaks(message.text)}</div>
                             )
                             :
                             <div className={classes.dialogEmpty}>
@@ -205,7 +160,7 @@ const Dialogs = () => {
                     </div>
                     <div className={classes.dialogFooter}>
                         <AutoResizeTextarea text={message} setText={setMessage} placeholder='Введите сообщение' maxLength={1000}/>
-                        <img src={send} alt='sendMessage'/>
+                        <img src={send} alt='sendMessage' onClick={createMessage}/>
                     </div>
                 </div>
             :

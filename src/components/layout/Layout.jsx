@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classes from "./Layout.module.css";
-import {Link, Outlet, useNavigate} from "react-router-dom";
+import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
 import logo from '../../assets/svg/logo.svg'
 import avatar from '../../assets/svg/avatar.svg'
@@ -10,6 +10,7 @@ import exit from '../../assets/svg/exit.svg'
 
 const Layout = () => {
     const {user, signOut} = useAuth()
+    const location = useLocation()
 
     const [detailsOpen, setDetailsOpen] = useState(false)
 
@@ -28,7 +29,7 @@ const Layout = () => {
                         <div
                             className={classes.details}
                             style={detailsOpen? {} : {display: 'none'}}
-                            onClick={()=>signOut(()=>navigate('/login'))}
+                            onClick={()=>signOut(()=>navigate('/login', {state: {from: location}}))}
                         >
                             <img src={exit} alt=""/>
                             <div>Выйти</div>
@@ -40,7 +41,7 @@ const Layout = () => {
                 <ul className={classes.navigation}>
                     <li>
                         <img src={avatar} alt={avatar}/>
-                        <Link to={user}>
+                        <Link to={user.id}>
                             My page
                         </Link>
                     </li>
