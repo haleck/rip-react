@@ -10,6 +10,7 @@ import {useAuth} from "../../hooks/useAuth";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router-dom";
 import {addLineBreaks} from "../../utils/format";
+import {io} from "socket.io-client"
 
 const Dialogs = () => {
     const {user} = useAuth()
@@ -23,9 +24,31 @@ const Dialogs = () => {
 
     const navigate = useNavigate()
 
+    const [socket, setSocket] = useState(null)
+
+    const [message, setMessage] = useState('')
+    const [searchQuery, setSearchQuery] = useState('')
+    const dialogRef = useRef(null)
+
+    // Получение сокета
+    useEffect(()=>{
+       const newSocket = io("http://localhost:8080");
+       setSocket(newSocket)
+
+        return () => {
+           newSocket.disconnect()
+        }
+    }, [user])
+
+    // Подключение пользователя
+    useEffect(()=>{
+        if (!socket) return
+        socket.emit('addNewUser', user?.id)
+    }, [socket])
+
     const fetchDialogs = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/dialogs/getAllUsersDialogs/${id}`)
+            const response = await axios.get(`http://localhost:5000/api/dialogs/getAllUsersDialogs/${id}`, {headers: {token: user.token}})
             setFetchedDialogs(response.data)
         } catch (e) {
             console.log(e)
@@ -34,7 +57,7 @@ const Dialogs = () => {
 
     const fetchDialogMessagesAndSetDialog = async (dialog) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/messages/getAllFromDialog/${dialog._id}`)
+            const response = await axios.get(`http://localhost:5000/api/messages/getAllFromDialog/${dialog._id}`, {headers: {token: user.token}})
             setDialog({...dialog, messages: response.data})
 
             if(dialog.firstUser === user.id) {
@@ -49,6 +72,7 @@ const Dialogs = () => {
         }
     }
 
+    // Получение диалогов
     useEffect(()=>{
         const dialogId = location.state?.dialogId
         const firstUser = location.state?.firstUser
@@ -62,10 +86,8 @@ const Dialogs = () => {
         fetchDialogs(user.id)
     }, [])
 
-    const [message, setMessage] = useState('')
-    const [searchQuery, setSearchQuery] = useState('')
-    const dialogRef = useRef(null)
 
+    // Поиск по диалогам
     useEffect(()=>{
         setSearchedDialogs(fetchedDialogs
             .filter((dialog)=>
@@ -79,6 +101,7 @@ const Dialogs = () => {
         )
     }, [searchQuery, fetchedDialogs])
 
+    // Передвинуть диалог на его последние сообщения
     useEffect(()=>{
         if (dialog.messages)
             dialogRef.current.scrollTop = dialogRef.current.scrollHeight
@@ -92,9 +115,13 @@ const Dialogs = () => {
                 senderName: user.name + ' ' + user.surname,
                 receiver: dialog.firstUser === user.id ? dialog.secondUser : dialog.firstUser,
                 receiverName: dialog.firstUser === user.id ? dialog.secondUserName : dialog.firstUserName,
-                text: message
+                text: message,
+                token: user.token
             }
-            console.log(params)
+
+            if (socket)
+                socket.emit('sendMessage', {...params})
+
             setMessage('')
             const response = await axios.post('http://localhost:5000/api/messages/create', params)
             await fetchDialogMessagesAndSetDialog(dialog)
@@ -102,6 +129,17 @@ const Dialogs = () => {
             console.log(e)
         }
     }
+
+    // Получение сообщения из сокетов
+    useEffect(()=>{
+        if (!socket) return
+
+        socket.on('getMessage', (message)=>{
+            if (dialog._id !== message.dialog) return
+
+            setDialog({...dialog, messages: [...dialog.messages, message]})
+        })
+    }, [socket, dialog])
 
     return (
         <div className={classes.content}>

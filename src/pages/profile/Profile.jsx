@@ -65,7 +65,8 @@ const Profile = () => {
             const params = {
                 author: currentUserId,
                 authorName: name + ' ' + surname,
-                content: text
+                content: text,
+                token: user.token
             }
 
             await axios.post('http://localhost:5000/api/posts/create', params)
@@ -80,7 +81,8 @@ const Profile = () => {
         try {
             const params = {
                 id: currentUserId,
-                status: status
+                status: status,
+                token: user.token
             }
             setEditStatus(false)
             await axios.put('http://localhost:5000/api/users/changeStatus', params)
@@ -95,7 +97,8 @@ const Profile = () => {
                 firstUser: user.id,
                 firstUserName: user.name + ' ' + user.surname,
                 secondUser: currentUserId,
-                secondUserName: name + ' ' + surname
+                secondUserName: name + ' ' + surname,
+                token: user.token
             }
 
             const response = await axios.post('http://localhost:5000/api/dialogs/create', params)

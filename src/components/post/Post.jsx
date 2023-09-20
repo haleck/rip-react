@@ -5,13 +5,15 @@ import dots from '../../assets/svg/dots.svg'
 import Delete from '../../assets/svg/delete.svg'
 import axios from "axios";
 import {addLineBreaks, formatDateWithMonthName} from "../../utils/format"
+import {useAuth} from "../../hooks/useAuth";
 
 const Post = ({children, name, time, deletePostCallback, id, deleteOption}) => {
     const [dotsClicked, setDotsClicked] = useState(false)
+    const {user} = useAuth()
 
     const deletePost = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/posts/delete/${id}`)
+            await axios.delete(`http://localhost:5000/api/posts/delete/${id}`, {headers: {token: user.token}})
             deletePostCallback()
         } catch (e) {
             console.log(e)
