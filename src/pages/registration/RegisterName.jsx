@@ -6,32 +6,19 @@ import InputField from "../../components/inputField";
 import Button from "../../components/button";
 import CustomLink from "../../components/customLink/CustomLink";
 import {useAuth} from "../../hooks/useAuth";
-import axios from "axios";
 
 const RegisterName = () => {
     const location = useLocation()
     const {email, password} = location.state
-    const {signIn} = useAuth()
-    const navigate = useNavigate()
     const fromPage = location.state?.from?.pathname || '/'
 
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
 
-    const registerUser = async (e) => {
-        e.preventDefault()
-
-        try {
-            const params = {email, password, name, surname}
-            await axios.post('http://localhost:5000/api/users/register', params)
-            signIn(email, fromPage)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    const {signUp} = useAuth()
 
     return (
-        <Form onSubmit={registerUser}>
+        <Form onSubmit={(e) => signUp(e, email, password, name, surname, fromPage)}>
             <FormHeader text='Как вас зовут?' />
             <InputField name='firstName' label='Имя' value={name} setValue={setName}/>
             <InputField name='lastName' label='Фамилия' value={surname} setValue={setSurname}/>

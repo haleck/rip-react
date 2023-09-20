@@ -1,15 +1,53 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const navigate = useNavigate()
+    const location = useLocation()
 
-    const signIn = async (email, navigatePath='/') => {
+    useEffect(()=>{
+        let userFromStorage = JSON.parse(localStorage.getItem('user'))
+        setUser(userFromStorage)
+    },[])
+
+    useEffect(()=> {
+        console.log(user, Boolean(user))
+        if (user) {
+            let navigatePath = location.pathname === '/login'? '/' + user.id : location.pathname
+            navigate(navigatePath, {replace: true})
+        }
+    }, [user])
+
+    const signIn = async (email, password, navigatePath='/') => {
         try {
-            const respond = await axios.get(`http://localhost:5000/api/users/login/${email}`)
+            const params = {
+                email,
+                password
+            }
+
+            const respond = await axios.post(`http://localhost:5000/api/users/login`, params)
             setUser(respond.data)
+            localStorage.setItem('user', JSON.stringify(respond.data))
+
+            navigatePath = navigatePath === '/' ? '/' + respond.data.id : navigatePath
+
+            navigate(navigatePath, {replace: true})
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const signUp = async (e, email, password, name, surname, navigatePath='/') => {
+        e.preventDefault()
+
+        try {
+            const params = {email, password, name, surname}
+            const respond = await axios.post('http://localhost:5000/api/users/register', params)
+
+            setUser(respond.data)
+            localStorage.setItem('user', JSON.stringify(respond.data))
 
             navigatePath = navigatePath === '/' ? '/' + respond.data.id : navigatePath
 
@@ -21,10 +59,11 @@ const AuthProvider = ({children}) => {
 
     const signOut = (cb) => {
         setUser(null)
+        localStorage.clear()
         cb()
     }
 
-    const value = {user, signIn, signOut}
+    const value = {user, signIn, signOut, signUp}
 
     return (
         <AuthContext.Provider value={value}>

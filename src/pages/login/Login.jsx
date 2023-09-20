@@ -22,15 +22,16 @@ const Login = () => {
 
         const form = e.target
         const email = form.email.value
+        const password = form.password.value
 
-        signIn(email, fromPage)
+        signIn(email, password, fromPage)
     }
 
     return (
         <Form onSubmit={login}>
             <Logo />
             <InputField name='email' label='Почта' value={email} setValue={setEmail} />
-            <InputField label='Пароль' value={password} setValue={setPassword} type='password'/>
+            <InputField name='password' label='Пароль' value={password} setValue={setPassword} type='password'/>
             <Button style={{marginTop: 20}} type="submit">Войти</Button>
             <CustomLink to='/registration' state={location.state}>Нет аккаунта? Регистрация</CustomLink>
         </Form>
