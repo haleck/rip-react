@@ -15,7 +15,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=> {
         console.log(user, Boolean(user))
         if (user) {
-            let navigatePath = location.pathname === '/login'? '/' + user.id : location.pathname
+            let navigatePath = location.state?.from? location.state?.from?.pathname : '/' + user.id
             navigate(navigatePath, {replace: true})
         }
     }, [user])
