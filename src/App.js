@@ -1,6 +1,6 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import Layout from "./components/layout/Layout";
+import MainLayout from "./components/mainLayout";
 import Profile from "./pages/profile";
 import Dialogs from "./pages/dialogs";
 import UserExist from "./hoc/UserExist";
@@ -17,7 +17,7 @@ function App() {
         <Routes>
             <Route path='/' element={
                 <RequireAuth>
-                    <Layout />
+                    <MainLayout />
                 </RequireAuth>
             }>
                 <Route path=':id' element={

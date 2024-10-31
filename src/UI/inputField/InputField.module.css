@@ -1,3 +1,9 @@
+.label {
+  margin-bottom: 5px;
+  margin-left: 3px;
+  color: #D9D9D9;
+}
+
 .input {
   height: 4rem;
   width: 33rem;
@@ -9,4 +15,4 @@
   padding: 0.8rem;
 }
 
-/*# sourceMappingURL=Input.module.css.map */
+/*# sourceMappingURL=InputField.module.css.map */

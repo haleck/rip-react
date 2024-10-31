@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["Form.module.sass"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;EACA","file":"Form.module.css"}
+{"version":3,"sourceRoot":"","sources":["Form.module.sass","../../_vars.sass"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;EACA;;;AAEF;EACE,OCNW;EDOX","file":"Form.module.css"}

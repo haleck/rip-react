@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from "./Layout.module.css";
+import classes from "./mainLayout.module.css";
 import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
 import logo from '../../assets/svg/logo.svg'
@@ -8,7 +8,7 @@ import detailsArrow from '../../assets/svg/detailsArrow.svg'
 import dialogs from '../../assets/svg/dialogs.svg'
 import exit from '../../assets/svg/exit.svg'
 
-const Layout = () => {
+const MainLayout = () => {
     const {user, signOut} = useAuth()
     const location = useLocation()
 
@@ -60,4 +60,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default MainLayout;

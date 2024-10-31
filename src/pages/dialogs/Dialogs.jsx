@@ -4,7 +4,7 @@ import search from '../../assets/svg/search.svg'
 import DialogsItem from "./DialogsItem";
 import chats from '../../assets/svg/chats.svg'
 import userPhoto from '../../assets/svg/userPhoto.svg'
-import AutoResizeTextarea from "../../components/autoResizeTextarea";
+import AutoResizeTextarea from "../../UI/autoResizeTextarea";
 import send from '../../assets/svg/post.svg'
 import {useAuth} from "../../hooks/useAuth";
 import axios from "axios";

@@ -4,7 +4,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom";
 import userPhoto from '../../assets/svg/userPhoto.svg'
 import Post from "../../components/post";
 import postIcon from "../../assets/svg/post.svg"
-import AutoResizeTextarea from "../../components/autoResizeTextarea";
+import AutoResizeTextarea from "../../UI/autoResizeTextarea";
 import {useAuth} from "../../hooks/useAuth";
 import axios from "axios";
 

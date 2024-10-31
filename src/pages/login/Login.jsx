@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import InputField from "../../components/inputField";
-import Button from "../../components/button";
+import InputField from "../../UI/inputField";
+import Button from "../../UI/button";
 import Form from '../../components/form'
-import Logo from "../../components/logo";
-import CustomLink from "../../components/customLink/CustomLink";
+import Logo from "../../UI/logo";
+import CustomLink from "../../UI/customLink";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
 
