@@ -5,7 +5,7 @@ import userPhoto from '../../assets/svg/userPhoto.svg'
 import Post from "../../components/post";
 import postIcon from "../../assets/svg/post.svg"
 import AutoResizeTextarea from "../../UI/autoResizeTextarea";
-import {useAuth} from "../../hooks/useAuth";
+import {useAuth} from "../../routing/hooks/useAuth";
 import axios from "axios";
 
 const Profile = () => {

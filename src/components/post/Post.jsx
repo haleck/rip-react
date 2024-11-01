@@ -5,7 +5,7 @@ import dots from '../../assets/svg/dots.svg'
 import Delete from '../../assets/svg/delete.svg'
 import axios from "axios";
 import {addLineBreaks, formatDateWithMonthName} from "../../utils/format"
-import {useAuth} from "../../hooks/useAuth";
+import {useAuth} from "../../routing/hooks/useAuth";
 
 const Post = ({children, name, time, deletePostCallback, id, deleteOption}) => {
     const [dotsClicked, setDotsClicked] = useState(false)

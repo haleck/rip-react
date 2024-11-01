@@ -1,31 +1,22 @@
 import React, {useState} from 'react';
-import Form from "../../components/form";
 import Logo from "../../UI/logo";
 import InputField from "../../UI/inputField";
 import Button from "../../UI/button";
 import CustomLink from "../../UI/customLink";
-import {useLocation, useNavigate} from "react-router-dom";
+import Form from "../../components/form";
+import {useLocation} from "react-router-dom";
 
-const Registration = () => {
+const AccountForm = ({onAccountFormSubmit}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
 
-    const navigate = useNavigate()
     const location = useLocation()
 
-    const goToNextStep = (e) => {
-        e.preventDefault()
-
-        const form = e.target
-        const email = form.email.value
-        const password = form.password.value
-
-        navigate('name', {state: {email, password, from: location.state.from}})
-    }
-
     return (
-        <Form onSubmit={goToNextStep}>
+        <Form
+            onSubmit={(e) => onAccountFormSubmit(e)}
+        >
             <Logo />
             <InputField name='email' label='Почта' value={email} setValue={setEmail} />
             <InputField name='password' label='Пароль' value={password} setValue={setPassword} type='password' />
@@ -36,4 +27,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default AccountForm;

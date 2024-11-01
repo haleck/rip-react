@@ -6,7 +6,7 @@ import chats from '../../assets/svg/chats.svg'
 import userPhoto from '../../assets/svg/userPhoto.svg'
 import AutoResizeTextarea from "../../UI/autoResizeTextarea";
 import send from '../../assets/svg/post.svg'
-import {useAuth} from "../../hooks/useAuth";
+import {useAuth} from "../../routing/hooks/useAuth";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router-dom";
 import {addLineBreaks} from "../../utils/format";

@@ -1,17 +1,15 @@
-import './App.css';
 import {Route, Routes} from "react-router-dom";
-import MainLayout from "./components/mainLayout";
-import Profile from "./pages/profile";
-import Dialogs from "./pages/dialogs";
+import MainLayout from "./layouts/mainLayout";
+import Profile from "../pages/profile";
+import Dialogs from "../pages/dialogs";
 import UserExist from "./hoc/UserExist";
-import Login from "./pages/login";
-import Registration from "./pages/registration";
+import Login from "../pages/login";
+import RegistrationPage from "../pages/registration";
 import RequireAuth from "./hoc/RequireAuth";
-import FormLayout from "./components/formLayout";
+import FormLayout from "./layouts/formLayout";
 import AuthProvider from "./hoc/AuthProvider";
-import RegisterName from "./pages/registration/RegisterName";
 
-function App() {
+function Routing() {
   return (
     <AuthProvider>
         <Routes>
@@ -29,14 +27,11 @@ function App() {
             </Route>
             <Route path='/' element={<FormLayout />}>
                 <Route path='login' element={<Login />} />
-                <Route path='registration'>
-                    <Route index element={<Registration />} />
-                    <Route path='name' element={<RegisterName />} />
-                </Route>
+                <Route path='registration' element={<RegistrationPage />}/>
             </Route>
         </Routes>
     </AuthProvider>
   );
 }
 
-export default App;
+export default Routing;

@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import classes from "./mainLayout.module.css";
 import {Link, Outlet, useLocation, useNavigate} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
-import logo from '../../assets/svg/logo.svg'
-import avatar from '../../assets/svg/avatar.svg'
-import detailsArrow from '../../assets/svg/detailsArrow.svg'
-import dialogs from '../../assets/svg/dialogs.svg'
-import exit from '../../assets/svg/exit.svg'
+import logo from '../../../assets/svg/logo.svg'
+import avatar from '../../../assets/svg/avatar.svg'
+import detailsArrow from '../../../assets/svg/detailsArrow.svg'
+import dialogs from '../../../assets/svg/dialogs.svg'
+import exit from '../../../assets/svg/exit.svg'
 
 const MainLayout = () => {
     const {user, signOut} = useAuth()

@@ -5,7 +5,7 @@ import Form from '../../components/form'
 import Logo from "../../UI/logo";
 import CustomLink from "../../UI/customLink";
 import {useLocation, useNavigate} from "react-router-dom";
-import {useAuth} from "../../hooks/useAuth";
+import {useAuth} from "../../routing/hooks/useAuth";
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -28,7 +28,7 @@ const Login = () => {
     }
 
     return (
-        <Form onSubmit={login}>
+        <Form onSubmit={(e) => login(e)}>
             <Logo />
             <InputField name='email' label='Почта' value={email} setValue={setEmail} />
             <InputField name='password' label='Пароль' value={password} setValue={setPassword} type='password'/>
