@@ -1,6 +1,6 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
-import {checkUserExists} from "../api/api";
+import {checkUserExists} from "../api";
 
 const UserExist = ({children}) => {
     const {pathname} = useLocation()

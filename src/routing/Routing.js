@@ -1,9 +1,9 @@
 import {Route, Routes} from "react-router-dom";
 import MainLayout from "./layouts/mainLayout";
-import Profile from "../pages/profile";
-import Dialogs from "../pages/dialogs";
+import ProfilePage from "../pages/profile";
+import DialogsPage from "../pages/dialogs";
 import UserExist from "./hoc/UserExist";
-import Login from "../pages/login";
+import LoginPage from "../pages/login";
 import RegistrationPage from "../pages/registration";
 import RequireAuth from "./hoc/RequireAuth";
 import FormLayout from "./layouts/formLayout";
@@ -20,13 +20,13 @@ function Routing() {
             }>
                 <Route path=':id' element={
                     <UserExist>
-                        <Profile />
+                        <ProfilePage />
                     </UserExist>
                 } />
-                <Route path='dialogs' element={<Dialogs />} />
+                <Route path='dialogs' element={<DialogsPage />} />
             </Route>
             <Route path='/' element={<FormLayout />}>
-                <Route path='login' element={<Login />} />
+                <Route path='login' element={<LoginPage />} />
                 <Route path='registration' element={<RegistrationPage />}/>
             </Route>
         </Routes>

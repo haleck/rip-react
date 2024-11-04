@@ -1,0 +1,27 @@
+@import '../../../../../vars'
+
+.searchBlock
+  position: sticky
+  top: 0
+  background-color: $bg_color
+  z-index: 1
+  border-right: 1px solid $bright
+  border-bottom: 1px solid $bright
+  width: 25rem
+  height: 4rem
+  display: flex
+  align-items: center
+  gap: 1rem
+  padding: 1.2rem
+  > img
+    width: 1.5rem
+    height: 1.5rem
+  > input
+    width: 100%
+    border: none
+    background: rgba(0,0,0,0)
+    font-size: 1.4rem
+    font-weight: 200
+    color: $text_color
+    &:focus
+      outline: none

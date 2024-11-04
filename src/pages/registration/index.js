@@ -1,3 +1,3 @@
-import RegistrationPage from "./RegistrationPage";
+import RegistrationPage from "./components/RegistrationPage";
 
 export default RegistrationPage;

@@ -1,6 +1,6 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
-import {login, register} from "../api/api";
+import {login, register} from "../api";
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)

@@ -1,3 +1,3 @@
-import Dialogs from "./Dialogs";
+import DialogsPage from "./components/DialogsPage";
 
-export default Dialogs;
+export default DialogsPage;

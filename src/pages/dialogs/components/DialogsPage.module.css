@@ -1,0 +1,9 @@
+.content {
+  height: calc(100vh - 6rem - 4rem);
+  border: 1px solid #5D5D5D;
+  border-radius: 1rem;
+  display: flex;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=DialogsPage.module.css.map */

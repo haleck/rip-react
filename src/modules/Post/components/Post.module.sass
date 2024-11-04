@@ -1,0 +1,59 @@
+@import '../../../vars'
+
+.post
+  width: 100%
+  padding: 1rem
+  border: 1px solid $bright
+  border-radius: 1rem
+  font-size: 1.2rem
+
+
+.title
+  display: flex
+  align-items: center
+
+  > div, > img
+    display: inline-block
+
+  &Name
+    font-size: 1.4rem
+
+  &Time
+    font-size: 1.2rem
+    opacity: 0.3
+
+.content
+  margin-top: 1.5rem
+
+.userPhoto
+  width: 3.5rem
+  height: 3.5rem
+  margin-right: 1rem
+
+.dots
+  width: 2.4rem
+  height: 0.6rem
+
+.dotsBlock
+  position: relative
+  margin-left: auto
+  cursor: pointer
+  align-self: start
+  margin-top: 0.4rem
+
+.deleteBtn
+  display: flex
+  align-items: center
+  padding: 0.6rem
+  width: 8rem
+  height: 3rem
+  background: $semi-dark
+  border: 1px solid rgba(217,217,217,0.2)
+  border-radius: 0.5rem
+  position: absolute
+  top: 20px
+  right: -1rem
+  > img
+    width: 1.6rem
+    height: 1.8rem
+    margin-right: 0.5rem

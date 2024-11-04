@@ -1,0 +1,21 @@
+@import '../../../../vars'
+
+.dialog
+  width: 100%
+  height: calc(100vh - $header_height - $content_padding * 2)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+
+.tip
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  width: 50rem
+  height: calc(100vh - 10rem)
+  > img
+    width: 5.5rem
+    height: 5.5rem
+  > div
+    font-size: 1.4rem
