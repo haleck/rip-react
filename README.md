@@ -21,21 +21,21 @@
 # Примеры работы
 ## Регистрация и вход
 
-<img src="./readme_images/Авторизация%20-%20регистрация.png" alt="" width="800" height="569">
-<img src="./readme_images/Авторизация%20-%20регистрация%20-%20имя.png" alt="" width="800" height="569">
-<img src="./readme_images/Авторизация%20-%20вход.png" alt="" width="800" height="569">
+<img src="./readme_images/Авторизация%20-%20регистрация.png" alt="">
+<img src="./readme_images/Авторизация%20-%20регистрация%20-%20имя.png" alt="">
+<img src="./readme_images/Авторизация%20-%20вход.png" alt="">
 
 ## Собственный профиль пользователя
 
-<img src="./readme_images/Профиль%20-%20вид%20своей%20страницы.png" alt="" width="800" height="569">
-<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20написание%20поста.png" alt="" width="800" height="569">
-<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20редиктирование%20статуса.png" alt="" width="800" height="569">
+<img src="./readme_images/Профиль%20-%20вид%20своей%20страницы.png" alt="">
+<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20написание%20поста.png" alt="">
+<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20редиктирование%20статуса.png" alt="">
 
 ## Чужой профиль пользователя
-<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы.png" alt="" width="800" height="569">
-<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы%20(1).png" alt="" width="800" height="569">
+<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы.png" alt="">
+<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы%20(1).png" alt="">
 
 ## Чат
 
-<img src="./readme_images/Диалоги%20-%20стартовая%20страница.png" alt="" width="800" height="569">
-<img src="./readme_images/Диалоги%20-%20пример%20диалога.png" alt="" width="800" height="569">
+<img src="./readme_images/Диалоги%20-%20стартовая%20страница.png" alt="">
+<img src="./readme_images/Диалоги%20-%20пример%20диалога.png" alt="">
