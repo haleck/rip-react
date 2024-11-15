@@ -1,70 +1,41 @@
-# Getting Started with Create React Routing
+# Фронтенд часть проекта "RIP"
 
-This project was bootstrapped with [Create React Routing](https://github.com/facebook/create-react-app).
+Приложение представляет собой фронтенд-часть проекта "RIP". Цель проекта - создать vk-like социальную сеть для улучшения навыков веб-разработки.
 
-## Available Scripts
+Главная функциональность приложения:
+- Регистрация / авторизация пользователя.
+- Просмотр профиля пользователя.
+- Изменение статуса.
+- Создание / удаление постов.
+- Чат с другими пользователями, обновляющийся в реальном времени.
 
-In the project directory, you can run:
+Используемые технологии:
+- React
+- Axios
 
-### `npm start`
+# Установка
+1. Запустите [бэкенд-часть приложения](https://github.com/haleck/rip-express).
+2. Скачайте зависимости `npm install`
+3. Запустите приложение `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Примеры работы
+## Регистрация и вход
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="./readme_images/Авторизация%20-%20регистрация.png" alt="" width="800" height="569">
+<img src="./readme_images/Авторизация%20-%20регистрация%20-%20имя.png" alt="" width="800" height="569">
+<img src="./readme_images/Авторизация%20-%20вход.png" alt="" width="800" height="569">
 
-### `npm test`
+## Собственный профиль пользователя
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="./readme_images/Профиль%20-%20вид%20своей%20страницы.png" alt="" width="800" height="569">
+<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20написание%20поста.png" alt="" width="800" height="569">
+<img src="./readme_images/Профиль%20-%20вид%20своей%20стриницы%20-%20редиктирование%20статуса.png" alt="" width="800" height="569">
 
-### `npm run build`
+## Чужой профиль пользователя
+<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы.png" alt="" width="800" height="569">
+<img src="./readme_images/Профиль%20-%20вид%20чужой%20страницы%20(1).png" alt="" width="800" height="569">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Чат
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React Routing documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web Routing
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="./readme_images/Диалоги%20-%20стартовая%20страница.png" alt="" width="800" height="569">
+<img src="./readme_images/Диалоги%20-%20пример%20диалога.png" alt="" width="800" height="569">
